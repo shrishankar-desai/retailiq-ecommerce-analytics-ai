@@ -1,0 +1,18 @@
+__pycache__/
+.pytest_cache/
+.venv/
+.env
+*.pyc
+.DS_Store
+input_data/
+data/raw/
+*.log
+
+# Prevent accidentally publishing original research-data files
+/events.csv
+/item_properties_part1.csv
+/item_properties_part2.csv
+/category_tree.csv
+/merged_data1.csv
+/raw_data/
+/data/original/
