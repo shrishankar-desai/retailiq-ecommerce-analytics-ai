@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Retail Intelligence Studio | Analytics + AI</title>
+<link rel="stylesheet" href="/static/styles.css"/>
+<script src="/static/plotly.min.js"></script>
+</head><body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-symbol">R<span>✦</span></div><div><strong>RETAIL<span class="brand-accent">IQ</span></strong><small>INTELLIGENCE STUDIO</small></div></div>
+    <div class="workspace-caption">WORKSPACE</div>
+    <nav aria-label="Primary navigation">
+      <button class="nav active" data-page="overview"><span class="nav-icon">▦</span>Overview</button>
+      <button class="nav" data-page="customers"><span class="nav-icon">◎</span>Customer insights</button>
+      <button class="nav" data-page="products"><span class="nav-icon">◇</span>Product intelligence</button>
+      <button class="nav" data-page="recommend"><span class="nav-icon">✦</span>AI recommendations</button>
+      <button class="nav" data-page="model"><span class="nav-icon">▤</span>Model performance</button>
+      <button class="nav" data-page="about"><span class="nav-icon">ⓘ</span>About the project</button>
+    </nav>
+    <div class="sidebar-bottom"><div class="data-status"><span class="status-dot"></span> Historical dataset <span class="tiny-angle">2015</span></div>
+      <div class="sidebar-note">A transparent portfolio demonstration built from anonymized Retailrocket shopping interactions.</div>
+      <div class="sidebar-footer">PORTFOLIO EDITION <span>v1.0</span></div>
+    </div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div><span class="crumb">WORKSPACE</span><span class="slash">/</span><span id="section-name">OVERVIEW</span></div><div class="topbar-actions"><span class="data-tag">● DATASET: MAY—SEP 2015</span><div class="avatar" aria-label="Portfolio Demo">R</div></div></header>
+    <div class="pagewrap">
+      <section id="page-overview" class="page active">
+        <div class="hero"><div class="hero-copy"><div class="eyebrow"><span class="pulse"></span> DATA-DRIVEN COMMERCE</div><h1>Understand behavior.<br/><em>Uncover opportunity.</em></h1><p>From millions of customer interactions to clear business intelligence and personalized discovery.</p><div class="hero-steps"><span>01 / ANALYZE</span><span>02 / UNDERSTAND</span><span>03 / RECOMMEND</span></div></div><div class="hero-art" aria-hidden="true"><span class="ring r1"></span><span class="ring r2"></span><span class="ring r3"></span><span class="spark">✦</span><span class="orbit one"></span><span class="orbit two"></span></div></div>
+        <div class="section-top"><div><div class="eyebrow dark">PERFORMANCE AT A GLANCE</div><h2>Commerce pulse <span class="small-muted">/ full dataset</span></h2></div><span class="pill">All historical records</span></div>
+        <div class="kpi-grid" id="summary-kpis"><div class="loading">Loading verified data…</div></div>
+        <div class="two-col charts"><div class="panel"><div class="panel-head"><div><h3>Shopping activity over time</h3><p>Daily event counts • UTC dates</p></div><span class="panel-icon">↗</span></div><div id="activity-chart" class="chart"></div><div class="chart-legend"><span><i class="dot teal"></i>Product views</span><span><i class="dot blue"></i>Cart additions</span><span><i class="dot coral"></i>Purchased items</span></div></div>
+        <div class="panel"><div class="panel-head"><div><h3>Visitor engagement</h3><p>Unique visitors who performed each activity</p></div><span class="panel-icon">◎</span></div><div id="funnel-bars" class="funnel-bars"></div><p class="footnote">Reach by event type; not an ordered funnel or proven conversion rate.</p></div></div>
+        <div class="notice"><span class="notice-icon">i</span><span><strong>Business interpretation:</strong> View, cart, and transaction events indicate interest and purchasing activity. The dataset has no reliable currency amounts, so this demo does not report revenue, ROI, or actual sales uplift.</span></div>
+      </section>
+      <section id="page-customers" class="page"><div class="heading"><div><div class="eyebrow dark">BEHAVIOR ANALYTICS</div><h1>Customer insights</h1><p>Understand the different ways visitors interact with products.</p></div></div>
+        <div class="kpi-grid three" id="segment-kpis"></div><div class="two-col"><div class="panel"><div class="panel-head"><div><h3>Visitor segments</h3><p>Mutually exclusive, defined by highest observed action</p></div></div><div id="segment-chart" class="chart tall"></div></div><div class="panel"><div class="panel-head"><div><h3>How to use these insights</h3><p>Examples of client decisions enabled by this data</p></div></div><div class="insight-list"><div class="insight"><div class="insight-num">01</div><div><b>Browsers</b><p>Identify products with attention but little downstream engagement and investigate the product page experience.</p></div></div><div class="insight"><div class="insight-num">02</div><div><b>Cart engagers</b><p>Analyze where visitors add items but do not record a transaction event.</p></div></div><div class="insight"><div class="insight-num">03</div><div><b>Purchasers</b><p>Explore which product categories attract repeat purchasing activity, without assuming monetary value.</p></div></div></div></div></div>
+      </section>
+      <section id="page-products" class="page"><div class="heading"><div><div class="eyebrow dark">PRODUCT ANALYTICS</div><h1>Product intelligence</h1><p>See which anonymized items earn attention, carts and purchases.</p></div><a class="download-btn" href="/api/download/products" download>↓ Download CSV</a></div>
+        <div class="filterbar"><label>Rank by<select id="sort-products"><option value="views">Product views</option><option value="carts">Cart additions</option><option value="purchases">Purchased item events</option><option value="interaction_total">All events</option></select></label><label>Root category<select id="category-filter"><option value="">All categories</option></select></label><label>Product ID contains<input id="product-search" type="search" placeholder="e.g. 1024"/></label></div>
+        <div class="two-col products-layout"><div class="panel"><div class="panel-head"><div><h3>Most-viewed product categories</h3><p>Root-level hierarchy labels are anonymized IDs</p></div></div><div class="chart" id="category-chart"></div></div><div class="panel"><div class="panel-head"><div><h3>Product leaderboard</h3><p>Top 10,000 interacted-with products eligible • displaying 30</p></div></div><div class="table-scroll"><table class="products-table"><thead><tr><th>ITEM ID</th><th>VIEWS</th><th>CARTS</th><th>PURCHASES</th></tr></thead><tbody id="product-table"></tbody></table></div></div></div><p class="footnote">No product names or prices were provided; IDs are shown rather than invented labels or revenue.</p>
+      </section>
+      <section id="page-recommend" class="page"><div class="heading"><div><div class="eyebrow dark">PERSONALIZED DISCOVERY</div><h1>AI recommendations <span class="ai-badge">OFFLINE MODEL</span></h1><p>Find relevant items using a visitor's historical product interactions.</p></div></div>
+        <div class="demo-controls"><label>Example anonymous visitor<select id="visitor-select"></select></label><label>Recommendation method<select id="rec-mode"><option value="similarity">Item similarity</option><option value="category">Category-aware blend</option><option value="popularity">Popular products (baseline)</option></select></label><button class="primary-btn" id="generate-button">Generate recommendations ↗</button></div>
+        <div class="two-col rec-layout"><div class="panel"><div class="panel-head"><div><h3>Browsing history</h3><p>Unique items previously engaged with by the visitor</p></div></div><div id="history-tags" class="tags"></div><p class="footnote">History is drawn only from the training period. Already-seen products are excluded from results.</p></div>
+        <div class="panel"><div class="panel-head"><div><h3>Recommended for you</h3><p>Top-five ranked product suggestions • model-generated</p></div><span class="panel-icon accent">✦</span></div><div id="recommendation-list" class="recommendation-list"><div class="loading">Select a visitor to load recommendations.</div></div></div></div>
+        <div class="notice"><span class="notice-icon">i</span><span>Recommendations are a historical offline demonstration, not real-time predictions. An anonymous visitor ID is not a real user profile. No purchased conversion lift is claimed.</span></div>
+      </section>
+      <section id="page-model" class="page"><div class="heading"><div><div class="eyebrow dark">RELIABILITY & TRANSPARENCY</div><h1>Model performance</h1><p>Measured outcomes on held-out future events—not invented accuracy claims.</p></div></div>
+        <div class="model-banner"><div><div class="eyebrow">MODEL VALIDATION</div><h2>Chronological. Reproducible. Honest.</h2><p>We compare three approaches on warm users who have history before the cutoff. Results are an offline proxy for relevance, not an A/B experiment.</p></div><div class="split-graphic"><b>80<span>%</span></b><small>TRAIN</small><b>10<span>%</span></b><small>VALIDATION</small><b>10<span>%</span></b><small>TEST</small></div></div>
+        <div class="kpi-grid three" id="model-kpis"></div><div class="two-col"><div class="panel"><div class="panel-head"><div><h3>Ranking metric comparison</h3><p>Precision@5, Recall@5, Hit Rate@5 • held-out test set</p></div></div><div id="model-chart" class="chart tall"></div></div><div class="panel"><div class="panel-head"><div><h3>Evaluation detail</h3><p>Actual results computed from source files</p></div></div><div class="table-scroll"><table class="products-table" id="model-table"><thead><tr><th>METHOD</th><th>P@5</th><th>R@5</th><th>HIT@5</th></tr></thead><tbody></tbody></table></div><div class="divider"></div><div id="eval-notes" class="eval-notes"></div></div></div>
+      </section>
+      <section id="page-about" class="page"><div class="heading"><div><div class="eyebrow dark">PROJECT CASE STUDY</div><h1>About the platform</h1><p>Real historical data. Practical analytics. Transparent modeling.</p></div></div>
+        <div class="two-col about-layout"><div class="panel prose"><h3>Business objective</h3><p>Help e-commerce teams identify products attracting attention, describe shopper engagement, and explore relevant item recommendations based on implicit feedback.</p><h3>What we built</h3><p>Automated processing of raw shopping events and time-varying category snapshots, a browser-based dashboard, item-to-item collaborative filtering, popularity fallback, and time-based offline evaluation.</p><h3>Deliverables</h3><p>Downloadable product and activity datasets, reproducible training code, API endpoints, unit tests, and documented model limitations.</p></div><div class="panel prose"><h3>Important limitations</h3><p>Observations date from 2015. Product names and monetary sales figures are unavailable. Product attributes are anonymized, and recommendations use historical co-interaction instead of modern user embeddings.</p><p>Visitors with no prior history receive popular-item suggestions. Offline ranking performance does not establish commercial lift.</p><h3>Dataset and licensing</h3><p>Retailrocket e-commerce dataset, published for recommender research and licensed CC BY-NC-SA 4.0. Verify permitted usage before any commercial redistribution or client deployment.</p><p><a href="https://www.kaggle.com/datasets/retailrocket/ecommerce-dataset" target="_blank" rel="noopener">View dataset source ↗</a></p></div></div>
+      </section>
+    </div>
+    <footer class="footer"><span>RETAILIQ STUDIO / RESEARCH DEMO</span><span>BUILT WITH REAL DATA · NO FABRICATED KPIs</span></footer>
+  </main>
+</div>
+<script src="/static/app.js"></script>
+</body></html>

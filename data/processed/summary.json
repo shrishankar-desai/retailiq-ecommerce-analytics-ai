@@ -1,0 +1,23 @@
+{
+  "events": 2756101,
+  "visitors": 1407580,
+  "products": 235061,
+  "views": 2664312,
+  "addtocarts": 69332,
+  "transaction_events": 22457,
+  "orders": 17672,
+  "first_date": "2015-05-03",
+  "last_date": "2015-09-18",
+  "funnel_visitors": {
+    "view": 1404179,
+    "addtocart": 37722,
+    "transaction": 11719
+  },
+  "events_with_asof_category": 2099173,
+  "category_coverage_pct": 76.16,
+  "analyzed_in_utc": true,
+  "model_train_events": 2204881,
+  "model_catalog_items": 8000,
+  "source": "Retailrocket historical 2015 events; uploaded raw CSV files",
+  "notes": "Events are not revenue; visitor funnel stages are reach, not ordered user journeys."
+}

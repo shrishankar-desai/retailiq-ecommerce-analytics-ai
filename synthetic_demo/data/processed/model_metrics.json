@@ -1,0 +1,59 @@
+{
+  "validation": {
+    "popularity": {
+      "users": 933,
+      "precision_at_5": 0.026152,
+      "recall_at_5": 0.039257,
+      "hit_rate_at_5": 0.126474,
+      "coverage": 0.041667
+    },
+    "similarity": {
+      "users": 933,
+      "precision_at_5": 0.082958,
+      "recall_at_5": 0.112715,
+      "hit_rate_at_5": 0.339764,
+      "coverage": 0.658333
+    },
+    "category": {
+      "users": 933,
+      "precision_at_5": 0.082958,
+      "recall_at_5": 0.112626,
+      "hit_rate_at_5": 0.340836,
+      "coverage": 0.658333
+    }
+  },
+  "test": {
+    "popularity": {
+      "users": 940,
+      "precision_at_5": 0.024681,
+      "recall_at_5": 0.037162,
+      "hit_rate_at_5": 0.119149,
+      "coverage": 0.041667
+    },
+    "similarity": {
+      "users": 940,
+      "precision_at_5": 0.071277,
+      "recall_at_5": 0.108262,
+      "hit_rate_at_5": 0.311702,
+      "coverage": 0.683333
+    },
+    "category": {
+      "users": 940,
+      "precision_at_5": 0.071489,
+      "recall_at_5": 0.108528,
+      "hit_rate_at_5": 0.312766,
+      "coverage": 0.683333
+    }
+  },
+  "protocol": "Global chronological event split 80/10/10; predictions use history at the 80% cutoff; unseen future interactions are relevant targets; warm users only.",
+  "train_cutoff_utc": "2025-03-14 06:35:05.249000+00:00",
+  "validation_cutoff_utc": "2025-03-22 23:26:31.649000+00:00",
+  "train_events": 50427,
+  "validation_events": 6303,
+  "test_events": 6304,
+  "catalog_items": 240,
+  "warm_validation_users": 964,
+  "warm_test_users": 971,
+  "cold_start_note": "People without training history are excluded from offline warm-user metrics and served via popularity fallback in the demo.",
+  "limitation": "Metrics are offline proxy metrics on historical implicit feedback, not controlled uplift or revenue impact."
+}
