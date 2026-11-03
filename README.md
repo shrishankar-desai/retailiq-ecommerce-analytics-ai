@@ -1,23 +1,22 @@
-# RetailIQ Studio — E-commerce Analytics + AI Recommendations
+## RetailIQ — E-commerce Analytics & AI Recommendation System
 
-**A client-facing, runnable portfolio demonstration using 100% synthetic shopping-event data.**
+**[View Live Interactive Dashboard](https://retailiq-ecommerce-analytics-ai.onrender.com/)**
 
-**Project screenshots:** Run the app, open the Overview and AI Recommendations tabs, then capture screenshots and add them to `reports/` before sending the repository to clients.
+An interactive e-commerce analytics and product recommendation platform built using Python, FastAPI, machine learning, and modern web technologies.
 
-> **Portfolio demonstration, not a customer engagement.** All visitor IDs, product IDs, interactions, model inputs, and model metrics shown by this public version are fictional. No sales lift, real revenue, or production performance is claimed.
+### Features
+- Customer behavior analytics
+- Product performance insights
+- Interactive visualizations
+- Personalized product recommendations
+- Machine learning performance evaluation
+- Data processing and automated testing
 
-## What this demonstrates
+**Live Demo:** https://retailiq-ecommerce-analytics-ai.onrender.com/
 
-| Page | Feature |
-| --- | --- |
-| Overview | Event activity, distinct visitors, daily trends, event-type reach |
-| Customer insights | Browser, cart-engager, and purchaser segments |
-| Product intelligence | Product leaderboard, category trends, search and CSV exports |
-| AI recommendations | Top-five unseen products per example visitor, three ranking methods |
-| Model performance | Chronological offline Precision@5, Recall@5, Hit Rate@5, and evaluation protocol |
-| About | Business challenge, deliverables, data-source transparency |
+**Technology:** Python, FastAPI, Docker, Machine Learning, HTML/CSS/JavaScript
 
-**Public demo dataset:** **63,034** generated events from **1,800** imaginary visitors interacting with **240** fictional products, between January and March 2025. The statistics above are calculated from synthetic data, not real customer analytics.
+**Demo Data:** The publicly hosted demonstration uses synthetic data. Results are illustrative and do not represent actual client business performance.
 
 ## Run on Windows
 
