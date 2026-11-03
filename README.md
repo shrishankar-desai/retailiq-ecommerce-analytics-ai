@@ -1,6 +1,26 @@
 ## RetailIQ — E-commerce Analytics & AI Recommendation System
 
-**[View Live Interactive Dashboard](https://retailiq-ecommerce-analytics-ai.onrender.com/)**
+## Live Demo
+
+[Explore the RetailIQ Dashboard](https://retailiq-ecommerce-analytics-ai.onrender.com/)
+
+Free-hosted demo: The first load may take around 30–60 seconds while the server wakes up.
+
+All public demonstration data is synthetic.
+
+## Project Screenshots
+
+### Business Analytics Dashboard
+![Analytics Overview](reports/overview.png)
+
+### Product Intelligence
+![Product Analytics](reports/product_intelligence.png)
+
+### AI-Powered Recommendations
+![Recommendation Engine](reports/ai_recommendations.png)
+
+### Machine Learning Evaluation
+![ML Model Performance](reports/model_performance.png)
 
 An interactive e-commerce analytics and product recommendation platform built using Python, FastAPI, machine learning, and modern web technologies.
 
