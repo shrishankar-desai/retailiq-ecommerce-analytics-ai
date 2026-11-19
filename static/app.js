@@ -60,7 +60,7 @@ async function getSummary(){
 }
 function productRows(items,links=false){return items.map(x=>`<tr><td>${links?`<button class="item-link" data-item="${Number(x.itemid)}">#${Number(x.itemid)}</button>`:'#'+Number(x.itemid)}</td><td>${fmt(x.views)}</td><td>${fmt(x.carts)}</td><td>${fmt(x.purchases)}</td></tr>`).join('');}
 async function loadOverview(){
-  const [s,t,products,m]=await Promise.all([getSummary(),fetchJSON('/trends'),fetchJSON('/products?sort=views&limit=5'),fetchJSON('/model')]);
+  const [s,t,products,m]=await Promise.all([getSummary(),fetchJSON('/trends'),fetchJSON('/products?sort=views&limit=3'),fetchJSON('/model')]);
   $('summary-kpis').innerHTML=[kpi('Visitors',compact(s.visitors),'Distinct anonymous IDs','users'),kpi('Shopping events',compact(s.events),'All recorded actions','event'),kpi('Cart additions',fmt(s.addtocarts),'Item-level cart events','cart'),kpi('Purchased-item events',fmt(s.transaction_events),fmt(s.orders)+' distinct order IDs','bag')].join('');
   trendData=t.data;await renderActivity();
   $('overview-products').innerHTML=productRows(products.products,true);

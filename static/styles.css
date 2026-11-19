@@ -16,3 +16,79 @@
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 
 @media(max-width:760px){.sidebar{scrollbar-width:none}.sidebar::-webkit-scrollbar{display:none}}
+
+/* Desktop overview: use the viewport for analysis, rather than a tall document. */
+@media(min-width:1100px) and (min-height:700px){
+  :root{--header:60px;--sidebar:200px}
+  .app-header{padding:0 24px;gap:22px}
+  .brand{font-size:25px}.brand-icon{width:27px;height:30px}
+  .header-caption{font-size:15px;padding-left:22px}
+  .dataset-badge{font-size:12px;padding:6px 11px}
+  .sidebar{padding-top:23px}.workspace-caption{font-size:9px;letter-spacing:1.1px;padding-bottom:17px}
+  .nav{min-height:44px;padding:10px 12px;gap:10px;font-size:13px}
+  .sidebar nav{gap:5px}.sidebar-bottom{padding-top:25px}
+  .main:has(#page-overview.active){height:calc(100dvh - var(--header));min-height:0}
+  .main:has(#page-overview.active) .pagewrap{padding:14px 22px;min-height:0;display:flex;flex-direction:column;max-width:none}
+  .main:has(#page-overview.active) .footer{display:none}
+  #page-overview.active{display:grid;grid-template-rows:auto auto minmax(0,1fr) auto;gap:12px;flex:1;min-height:0}
+  #page-overview .heading{margin:0;align-items:center;gap:14px}
+  #page-overview .eyebrow,#page-overview .heading>div>p{display:none}
+  #page-overview h1{font-size:30px;line-height:1.2;letter-spacing:-1.1px}
+  #page-overview .heading-actions{max-width:none;flex-wrap:nowrap}
+  #page-overview .heading-actions .primary-btn,#page-overview .date-chip{min-height:36px;padding:8px 12px;font-size:12px}
+  #page-overview .kpi-grid{margin:0;gap:12px}
+  #page-overview .kpi{padding:11px 15px;gap:12px;border-radius:12px}
+  #page-overview .kpi-icon{width:35px;height:37px;border-radius:10px}
+  #page-overview .kpi-icon svg{width:22px;height:22px}
+  #page-overview .kpi-label{font-size:12px;line-height:1.3}
+  #page-overview .kpi-value{font-size:29px;line-height:1.15;margin:3px 0 0;letter-spacing:-.9px}
+  #page-overview .kpi-sub{display:none}
+  #page-overview .overview-grid{grid-template-columns:minmax(0,1.65fr) minmax(310px,1fr);grid-template-rows:minmax(230px,1.5fr) minmax(185px,1fr);gap:12px;min-height:0}
+  #page-overview .panel{padding:14px 16px;border-radius:13px;min-height:0}
+  #page-overview .panel-head{margin-bottom:10px;gap:12px;flex-wrap:nowrap}
+  #page-overview h2{font-size:18px;line-height:1.3;letter-spacing:-.5px}
+  #page-overview .panel-head p{font-size:12px;line-height:1.35;margin-top:4px}
+  #page-overview .activity-panel,#page-overview .investigation-panel{display:flex;flex-direction:column}
+  #page-overview .activity-panel .chart{height:auto;flex:1;min-height:120px}
+  #page-overview .chart-note{font-size:10px;margin:4px 0 0;line-height:1.4}
+  #page-overview .chart-toggles{padding:3px;gap:2px}
+  #page-overview .series-toggle{padding:5px 6px;font-size:10px;gap:4px}
+  #page-overview .panel-tabs{margin-bottom:6px;padding:3px}
+  #page-overview .panel-tab{padding:5px 9px;font-size:11px}
+  #page-overview .panel-tabs .text-button{font-size:10px}
+  #page-overview .investigation-panel .table-scroll{flex:1;min-height:0}
+  #page-overview .investigation-panel .products-table td{padding:9px 8px;font-size:12px}
+  #page-overview .investigation-panel .products-table th{padding:8px;font-size:10px}
+  #page-overview .investigation-panel>.footnote{margin-top:6px;font-size:10px;line-height:1.4}
+  #page-overview .comparison-panel{display:flex;flex-direction:column}
+  #page-overview .comparison-panel .panel-head{margin-bottom:8px}
+  #page-overview .comparison-panel .panel-head p{font-size:11px;line-height:1.3;margin-top:3px}
+  #page-overview .comparison-grid{min-height:0;flex:1;grid-template-columns:1.4fr 1fr;gap:20px}
+  #page-overview .comparison-chart-wrap{display:flex;flex-direction:column;min-height:0;padding-left:20px}
+  #page-overview .comparison-chart-wrap h3{font-size:12px;line-height:1.3}
+  #page-overview .comparison-chart-wrap>.footnote{font-size:10px;line-height:1.4}
+  #page-overview .comparison-chart{flex:1;height:auto;min-height:75px}
+  #page-overview .method-table td{padding:7px 9px;font-size:12px;line-height:1.3}
+  #page-overview .method-table th{padding:7px 9px;font-size:10px;line-height:1.3}
+  #page-overview .method-table td:first-child{font-size:11px}
+  #page-overview #overview-evaluation-note{margin:5px 0 0;font-size:10px;line-height:1.3}
+  #page-overview .context-strip{margin:0;padding:7px 11px;gap:8px;border-radius:8px}
+  #page-overview .context-strip p,#page-overview .context-strip .text-button{font-size:10px;line-height:1.5}
+}
+/* Very short windows keep normal document scrolling; content is never clipped. */
+@media(min-width:1100px) and (min-height:700px) and (max-height:780px){
+  #page-overview .overview-grid{grid-template-rows:minmax(215px,1.4fr) minmax(180px,1fr)}
+  #page-overview .panel{padding:11px 14px}
+  #page-overview .comparison-panel .panel-head h2{font-size:16px}
+  #page-overview .comparison-panel .panel-head p{display:none}
+  #page-overview .panel-head p{font-size:11px}
+  #page-overview .method-table td{padding-top:6px;padding-bottom:6px}
+}
+@media(min-width:1100px) and (min-height:700px) and (max-height:780px){
+  #page-overview .investigation-panel .products-table td{padding-top:4px;padding-bottom:4px;line-height:1.35}
+  #page-overview .investigation-panel .products-table th{padding-top:5px;padding-bottom:5px;line-height:1.3}
+}
+
+/* Overview tagline stays visible in the compact desktop layout. */
+#page-overview .heading>div>p.overview-tagline{display:block;font-size:13px;line-height:1.4;margin:5px 0 0;color:var(--muted)}
+@media(min-width:1100px) and (min-height:700px){#page-overview .heading>div>p.overview-tagline{font-size:12px;margin-top:4px}}
