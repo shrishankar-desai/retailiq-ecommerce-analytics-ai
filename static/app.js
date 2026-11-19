@@ -149,6 +149,11 @@ async function exportReport(button){
 document.querySelectorAll('.nav').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.page)));
 document.querySelectorAll('[data-open-page]').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.openPage)));
 document.querySelector('.brand').addEventListener('click',e=>{e.preventDefault();navigate('overview')});
+document.querySelectorAll('[data-overview-view]').forEach(button=>button.addEventListener('click',()=>{
+  document.querySelector('#page-overview .overview-grid').dataset.view=button.dataset.overviewView;
+  document.querySelectorAll('[data-overview-view]').forEach(other=>{const active=other===button;other.classList.toggle('active',active);other.setAttribute('aria-pressed',String(active));});
+  requestAnimationFrame(()=>document.querySelectorAll('#page-overview .js-plotly-plot').forEach(el=>{if(el.getBoundingClientRect().width)Plotly.Plots.resize(el);}));
+}));
 document.querySelectorAll('.series-toggle').forEach(b=>b.addEventListener('click',()=>{visibleSeries[b.dataset.series]=!visibleSeries[b.dataset.series];b.classList.toggle('active',visibleSeries[b.dataset.series]);b.setAttribute('aria-pressed',String(visibleSeries[b.dataset.series]));renderActivity().catch(()=>showError('overview'));}));
 $('overview-products').addEventListener('click',e=>{const b=e.target.closest('[data-item]');if(!b)return;$('product-search').value=b.dataset.item;$('category-filter').value='';navigate('products');if(loaded.products)loadProductTable().catch(()=>showError('products'));});
 ['sort-products','category-filter'].forEach(id=>$(id).addEventListener('change',()=>loadProductTable().catch(()=>showError('products'))));
