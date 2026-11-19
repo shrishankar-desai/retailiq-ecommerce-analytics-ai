@@ -17,7 +17,7 @@ from src.recommender import recommend
 
 BASE=Path(__file__).resolve().parent
 DATA=Path(os.environ.get('RETAILIQ_DATA_DIR', str(BASE/'data'/'processed'))).resolve()
-app=FastAPI(title='Retail Intelligence Studio',version='1.0.0',description='Synthetic e-commerce analytics and offline item recommendations')
+app=FastAPI(title='Retail Intelligence Studio',version='1.0.0',description='Historical e-commerce analytics and offline item recommendations')
 app.mount('/static',StaticFiles(directory=BASE/'static'),name='static')
 
 @lru_cache(maxsize=24)
@@ -98,7 +98,7 @@ def get_recommendations(visitorid:int,mode:Literal['similarity','category','popu
     row=matches[0]
     recs=recommend(model(),row['history'],n=5,mode=mode)
     return {'visitorid':visitorid,'history':row['history'],'mode':mode,'recommendations':recs,
-            'note':'Offline demo with entirely synthetic visitor/item interactions; not live customer behavior.'}
+            'note':'Offline historical demonstration; not live customer behavior.'}
 
 @app.get('/api/model')
 def performance():return load_json('model_metrics.json')

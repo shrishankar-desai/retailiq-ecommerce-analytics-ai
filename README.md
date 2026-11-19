@@ -1,4 +1,4 @@
-## RetailIQ — E-commerce Analytics & AI Recommendation System
+## RetailIQ Commerce Studio — E-commerce Analytics & Recommendations
 
 ## Live Demo
 
@@ -6,25 +6,21 @@
 
 Free-hosted demo: The first load may take around 30–60 seconds while the server wakes up.
 
-All public demonstration data is synthetic.
+The default app reads the historical research artifacts in `data/processed/`. A separate synthetic-data generator is included for independent experiments. The interface displays the source recorded in the active summary file.
 
-## Project Screenshots
+## Commerce Studio interface
 
-### Business Analytics Dashboard
-![Analytics Overview](reports/overview.png)
+[Open the live Commerce Studio dashboard](https://retailiq-ecommerce-analytics-ai.onrender.com/)
 
-### Product Intelligence
-![Product Analytics](reports/product_intelligence.png)
-
-### AI-Powered Recommendations
-![Recommendation Engine](reports/ai_recommendations.png)
-
-### Machine Learning Evaluation
-![ML Model Performance](reports/model_performance.png)
+The plum, coral and lavender workspace includes product investigation, shopper analysis, side-by-side recommendations, offline model evaluation and CSV reporting. All displayed values come from the active data artifacts.
 
 An interactive e-commerce analytics and product recommendation platform built using Python, FastAPI, machine learning, and modern web technologies.
 
 ### Features
+- Commerce Studio interface in plum, coral and lavender, with responsive layouts
+- Overview product investigation and actual offline method comparison
+- Side-by-side visitor recommendations versus a popularity baseline
+- Downloadable commerce report with source and metric definitions
 - Customer behavior analytics
 - Product performance insights
 - Interactive visualizations
@@ -36,7 +32,7 @@ An interactive e-commerce analytics and product recommendation platform built us
 
 **Technology:** Python, FastAPI, Docker, Machine Learning, HTML/CSS/JavaScript
 
-**Demo Data:** The publicly hosted demonstration uses synthetic data. Results are illustrative and do not represent actual client business performance.
+**Demo data:** The default packaged results describe historical Retailrocket shopping interactions. This is a portfolio research demonstration, not a client engagement or live store integration.
 
 ## Run on Windows
 
@@ -48,7 +44,7 @@ py -m venv .venv
 .\.venv\Scripts\python.exe -m uvicorn app:app --reload
 ```
 
-Open <http://127.0.0.1:8000>. You do not need any original Retailrocket files. The app includes synthetic processed data and a separately fitted synthetic-data model.
+Open <http://127.0.0.1:8000>. You do not need any original Retailrocket files. The app includes processed historical aggregates and a fitted recommendation model.
 
 On macOS/Linux:
 
@@ -68,20 +64,20 @@ python scripts/build.py --input-dir synthetic_demo/input_data --root synthetic_d
 
 The training pipeline converts event rows and historical item properties to aggregates; resolves category history at event time; trains implicit item-to-item recommendations; and applies a chronological 80/10/10 evaluation split. By default, the hosted app reads its packaged `data/processed/` files; to use freshly retrained synthetic outputs, copy the regenerated files from `synthetic_demo/data/processed/` to `data/processed/` or set `RETAILIQ_DATA_DIR` to that directory.
 
-## Model evaluation on fictional data
+## Model evaluation for the default packaged data
 
 | Model | Precision@5 | Recall@5 | Hit Rate@5 |
 | --- | ---: | ---: | ---: |
-| Popular items baseline | 2.468% | 3.716% | 11.915% |
-| Item-to-item similarity | 7.128% | 10.826% | 31.170% |
-| Category-aware blend | 7.149% | 10.853% | 31.277% |
+| Popular items baseline | 0.0513% | 0.2209% | 0.2563% |
+| Item-to-item similarity | 0.1291% | 0.4207% | 0.6264% |
+| Category-aware blend | 0.1481% | 0.4736% | 0.7118% |
 
-Results are on **940 eligible warm users** in the synthetic test split. They indicate the ranking methods can be compared and evaluated, **not that these performance numbers will generalize to real e-commerce sites**. See [model evaluation](reports/model_evaluation.md) for definitions.
+Results are on **10,536 eligible warm users** in the packaged historical test split. They indicate the ranking methods can be compared and evaluated, **not that these performance numbers will generalize to real e-commerce sites**. See [model evaluation](reports/model_evaluation.md) for definitions.
 
 ## Architecture
 
 ```text
-Synthetic event/property CSVs (generated) → scripts/build.py
+Event/property CSVs (historical research data or separately generated synthetic data) → scripts/build.py
   ├── src/analytics.py (data preparation, aggregates, quality checks)
   ├── src/recommender.py (implicit feedback, similarity ranking, fallback)
   └── data/processed/ (precomputed tables, model, evaluation)
@@ -109,12 +105,12 @@ A `Dockerfile` is included. Set any platform's exposed public port appropriately
 
 ## Case study and limitations
 
-See [client case study](reports/client_case_study.md). This project models event counts, not monetary revenue or causal conversion uplift. Product identifiers are fictional; no product names or prices are available. The category blend results are improvements over a simple popularity baseline **within the generated dataset only**. A real customer deployment requires the customer's own event definitions, data permissions, privacy requirements, purchase-quality labels, model retraining, and monitoring.
+See [client case study](reports/client_case_study.md). This project models event counts, not monetary revenue or causal conversion uplift. Product identifiers are anonymized; no product names or prices are available. The category blend results are improvements over a simple popularity baseline **within the packaged historical evaluation only**. A real customer deployment requires the customer's own event definitions, data permissions, privacy requirements, purchase-quality labels, model retraining, and monitoring.
 
 ## Data provenance and license
 
-This GitHub-ready portfolio demo was built by retraining on **independently generated synthetic data**. It contains **no original Retailrocket records or Retailrocket-derived aggregates or fitted model**. The broader original project was inspired by the Retailrocket public e-commerce research dataset: [source and CC BY-NC-SA 4.0 attribution](https://www.kaggle.com/datasets/retailrocket/ecommerce-dataset). That research dataset is not included here and is not permission for a commercial deployment.
+The default `data/processed/summary.json` identifies historical Retailrocket events as its source. The corresponding packaged evaluation uses 10,536 eligible test visitors. The separate `synthetic_demo/` workflow is an alternative dataset and must not be confused with the default deployment. `RETAILIQ_DATA_DIR` selects the active artifacts.
 
-Code is supplied under the MIT license in `LICENSE`. Data in the public demo is fictional and independently generated for this sample application.
+Research data attribution: [Retailrocket dataset and CC BY-NC-SA 4.0 source](https://www.kaggle.com/datasets/retailrocket/ecommerce-dataset). Code is supplied under the MIT license in `LICENSE`; that code license does not change the research dataset's permissions. Client deployments need appropriately permitted data and retraining.
 
-**Suggested portfolio claim:** "Built a working e-commerce analytics dashboard and offline top-five recommendation engine, with reproducible synthetic-data evaluation and API tests." Do not describe demo metrics as client outcomes.
+**Portfolio scope:** A working e-commerce analytics application and offline top-five recommendation engine, with reproducible evaluation and API tests. Demo metrics are not client outcomes.
