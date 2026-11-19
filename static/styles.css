@@ -195,3 +195,18 @@ body{padding-bottom:var(--footer-height)}
   #page-overview .investigation-panel .panel-tabs .text-button{padding:2px;font-size:9px}
   .footer-message{gap:10px}.footer-message span{display:inline;font-size:9px}
 }
+
+/* Let the page scroll naturally instead of constraining overview content to one screen. */
+.main:has(#page-overview.active){height:auto;min-height:calc(100dvh - var(--header) - var(--footer-height))}
+.main:has(#page-overview.active) .pagewrap{display:block;min-height:0}
+#page-overview.active{display:block;height:auto;min-height:0}
+#page-overview .heading{margin-bottom:14px}
+#page-overview .kpi-grid{margin-bottom:14px}
+#page-overview .overview-view-switch{margin-bottom:10px}
+#page-overview .overview-grid{height:auto;grid-template-rows:auto;align-items:stretch}
+#page-overview .activity-panel .chart{height:250px;flex:none;min-height:0}
+#page-overview .comparison-chart{height:150px;flex:none;min-height:0}
+#page-overview .investigation-panel .table-scroll{flex:none;min-height:0;max-height:none}
+#page-overview .context-strip{margin-top:12px}
+@media(max-width:1099px){#page-overview .activity-panel .chart{height:220px}}
+@media(max-width:760px){#page-overview .activity-panel .chart{height:250px}}
