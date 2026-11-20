@@ -160,3 +160,5 @@ document.querySelectorAll('.export-report').forEach(b=>b.addEventListener('click
 window.addEventListener('hashchange',()=>navigate(location.hash.slice(1)));
 getSummary().catch(()=>{});
 navigate(location.hash.slice(1)||'overview');
+
+$('header-search').addEventListener('submit',async e=>{e.preventDefault();$('product-search').value=$('header-product-search').value.trim();$('category-filter').value='';navigate('products');await loadPage('products');if(loaded.products)loadProductTable().catch(()=>showError('products'));});
